@@ -1,4 +1,3 @@
-import Image from "next/image";
 import styles from "./PhotoFrame.module.css";
 
 type FrameVariant = "rectangular" | "oval" | "ornate" | "arch" | "circular";
@@ -22,7 +21,8 @@ export default function PhotoFrame({
     <div className={`${styles.frame} ${styles[variant]} scroll-fade`}>
       <div className={styles.imageWrapper}>
         <div className={styles.imageInner}>
-          <Image src={src} alt={alt} width={400} height={500} />
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img src={src} alt={alt} />
         </div>
       </div>
       {(caption || date) && (
