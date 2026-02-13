@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <!-- Background -->
+  <rect width="400" height="500" fill="#6B7B8D"/>
+  
+  <!-- Heart shape -->
+  <path d="M200,360 C200,360 160,320 140,300 C120,280 120,260 140,245 C160,230 185,240 200,260 C215,240 240,230 260,245 C280,260 280,280 260,300 C240,320 200,360 200,360 Z" fill="#B0D4E3" opacity="0.8"/>
+  
+  <!-- Label text -->
+  <text x="200" y="420" font-family="Georgia, serif" font-size="24" fill="#B0D4E3" text-anchor="middle" font-weight="300" letter-spacing="2">First Smiles</text>
+</svg>
