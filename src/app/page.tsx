@@ -6,8 +6,6 @@ import GalleryRoom from "@/components/GalleryRoom";
 import PhotoFrame from "@/components/PhotoFrame";
 import MuseumFooter from "@/components/MuseumFooter";
 
-const basePath = "/valentines2026";
-
 export default function Home() {
   useEffect(() => {
     const observer = new IntersectionObserver(
@@ -35,14 +33,14 @@ export default function Home() {
       {/* Room 1: The Beginning */}
       <GalleryRoom title="El Comienzo" wallColor="var(--burgundy)">
         <PhotoFrame
-          src={`${basePath}/photos/photo1.svg`}
+          src={`/photos/photo1.svg`}
           alt="Our first chapter"
           caption="Where It All Started"
           date="Chapter One"
           variant="ornate"
         />
         <PhotoFrame
-          src={`${basePath}/photos/photo2.svg`}
+          src={`/photos/photo2.svg`}
           alt="First moments together"
           caption="First Smiles"
           date="The Early Days"
@@ -53,21 +51,21 @@ export default function Home() {
       {/* Room 2: Our Adventures */}
       <GalleryRoom title="Nuestras Aventuras" wallColor="var(--navy)">
         <PhotoFrame
-          src={`${basePath}/photos/photo3.svg`}
+          src={`/photos/photo3.svg`}
           alt="Adventures together"
           caption="Exploring Together"
           date="Our Journey"
           variant="arch"
         />
         <PhotoFrame
-          src={`${basePath}/photos/photo4.svg`}
+          src={`/photos/photo4.svg`}
           alt="Shared experiences"
           caption="Making Memories"
           date="Along the Way"
           variant="rectangular"
         />
         <PhotoFrame
-          src={`${basePath}/photos/photo5.svg`}
+          src={`/photos/photo5.svg`}
           alt="Joy and laughter"
           caption="Pure Joy"
           date="Captured Moments"
@@ -78,14 +76,14 @@ export default function Home() {
       {/* Room 3: Momentos Preciados */}
       <GalleryRoom title="Treasured Moments" wallColor="var(--charcoal)">
         <PhotoFrame
-          src={`${basePath}/photos/photo6.svg`}
+          src={`/photos/photo6.svg`}
           alt="Treasured memory"
           caption="Close to Heart"
           date="Forever Ours"
           variant="ornate"
         />
         <PhotoFrame
-          src={`${basePath}/photos/photo7.svg`}
+          src={`/photos/photo7.svg`}
           alt="Precious moments"
           caption="Golden Moments"
           date="Timeless"
