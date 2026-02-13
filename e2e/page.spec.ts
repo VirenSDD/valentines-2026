@@ -7,14 +7,14 @@ test.describe("Valentine's Museum", () => {
       if (res.status() === 404) notFound.push(res.url());
     });
 
-    await page.goto("./");
+    await page.goto("/");
     await page.waitForLoadState("networkidle");
 
     expect(notFound, `404s detected:\n${notFound.join("\n")}`).toHaveLength(0);
   });
 
   test("page structure renders", async ({ page }) => {
-    await page.goto("./");
+    await page.goto("/");
 
     await expect(page.getByRole("heading", { name: "Museo de Paola & Viren" })).toBeVisible();
 
@@ -26,11 +26,11 @@ test.describe("Valentine's Museum", () => {
     await expect(page.getByText("Feliz Día de San Valentín 2026")).toBeVisible();
   });
 
-  test("all 7 SVG images load successfully", async ({ page }) => {
-    await page.goto("./");
+  test("all 7 images load successfully", async ({ page }) => {
+    await page.goto("/");
     await page.waitForLoadState("networkidle");
 
-    const images = page.locator('img[src*="/photos/photo"]');
+    const images = page.locator('img[src*="/photos/"]');
     await expect(images).toHaveCount(7);
 
     for (let i = 0; i < 7; i++) {
@@ -42,7 +42,7 @@ test.describe("Valentine's Museum", () => {
   });
 
   test("all 5 frame variants present", async ({ page }) => {
-    await page.goto("./");
+    await page.goto("/");
 
     const variants = ["rectangular", "oval", "ornate", "arch", "circular"];
     for (const variant of variants) {

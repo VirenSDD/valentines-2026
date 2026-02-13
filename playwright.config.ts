@@ -7,13 +7,12 @@ export default defineConfig({
   retries: process.env.CI ? 1 : 0,
   reporter: process.env.CI ? "github" : "list",
   use: {
-    baseURL: "http://localhost:3000/valentines2026/",
+    baseURL: "http://localhost:3000",
   },
   projects: [{ name: "chromium", use: { browserName: "chromium" } }],
   webServer: {
-    command:
-      "rm -rf /tmp/serve-valentines && mkdir -p /tmp/serve-valentines/valentines2026 && cp -R out/* /tmp/serve-valentines/valentines2026/ && npx serve /tmp/serve-valentines -l 3000 --no-clipboard",
-    url: "http://localhost:3000/valentines2026",
+    command: "npx serve out -l 3000 --no-clipboard",
+    url: "http://localhost:3000",
     reuseExistingServer: !process.env.CI,
     timeout: 30_000,
   },
