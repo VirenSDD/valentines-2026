@@ -18,7 +18,7 @@ test.describe("Valentine's Museum", () => {
 
     await expect(page.getByRole("heading", { name: "Museo de Paola & Viren" })).toBeVisible();
 
-    const roomTitles = ["El Comienzo", "Nuestras Aventuras", "Treasured Moments"];
+    const roomTitles = ["El Comienzo", "Nuestras Aventuras", "Otro año más"];
     for (const title of roomTitles) {
       await expect(page.getByRole("heading", { name: title })).toBeVisible();
     }
