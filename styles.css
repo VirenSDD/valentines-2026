@@ -1,0 +1,424 @@
+/* ── Museum of Us — Complete Stylesheet ── */
+
+:root {
+  /* Wall colors */
+  --burgundy: #4a1a2e;
+  --navy: #1a2a4a;
+  --charcoal: #2a2a2e;
+
+  /* Accent colors */
+  --gold: #c9a84c;
+  --gold-light: #e8d48b;
+  --gold-dark: #a07c30;
+  --cream: #f5f0e8;
+  --cream-dim: #d4cfc7;
+
+  /* Frame gradients */
+  --frame-gold: linear-gradient(135deg, #c9a84c, #e8d48b, #a07c30, #c9a84c);
+  --frame-gold-inner: linear-gradient(135deg, #a07c30, #c9a84c, #e8d48b, #a07c30);
+
+  /* Typography */
+  --font-heading: "Playfair Display", Georgia, serif;
+  --font-body: "Cormorant Garamond", Garamond, serif;
+}
+
+/* ── Reset & Base ── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 1.6;
+  color: var(--cream);
+  background-color: var(--charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* ── Scroll Animations ── */
+
+.scroll-fade {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.scroll-fade.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── Museum Entrance / Hero ── */
+
+.entrance {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2rem;
+  background:
+    radial-gradient(ellipse at 50% 40%, rgba(201, 168, 76, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse at 50% 50%, rgba(74, 26, 46, 0.4) 0%, transparent 70%),
+    var(--charcoal);
+  position: relative;
+  overflow: hidden;
+}
+
+.entrance-heading {
+  font-size: 4.5rem;
+  color: var(--gold-light);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  text-shadow: 0 2px 20px rgba(201, 168, 76, 0.3);
+}
+
+.entrance-subtitle {
+  font-family: var(--font-body);
+  font-size: 1.5rem;
+  font-weight: 300;
+  font-style: italic;
+  color: var(--cream-dim);
+  letter-spacing: 0.06em;
+  margin-bottom: 2.5rem;
+}
+
+.entrance-divider {
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 3rem;
+}
+
+.entrance-divider-line {
+  width: 80px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.entrance-chevron {
+  position: absolute;
+  bottom: 2.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.entrance-chevron svg {
+  stroke: var(--gold);
+  opacity: 0.6;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50% { transform: translateX(-50%) translateY(10px); }
+}
+
+/* ── Gallery Room ── */
+
+.room {
+  padding: 5rem 2rem;
+  min-height: 80vh;
+}
+
+.room-title {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 4rem;
+  text-align: center;
+}
+
+.title-line {
+  flex: 0 1 120px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--gold), transparent);
+}
+
+.title-text {
+  font-size: 2.2rem;
+  color: var(--gold-light);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+
+.title-icon {
+  display: flex;
+  align-items: center;
+  opacity: 0.7;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 3rem;
+  max-width: 1200px;
+  margin: 0 auto;
+  justify-items: center;
+  align-items: start;
+}
+
+/* Staggered vertical offsets on desktop */
+@media (min-width: 768px) {
+  .grid > :nth-child(even) {
+    margin-top: 3rem;
+  }
+}
+
+/* ── Photo Frame Styles ── */
+
+.frame {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+
+.image-wrapper {
+  position: relative;
+  padding: 12px;
+  background: var(--frame-gold);
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.4),
+    inset 0 1px 0 rgba(232, 212, 139, 0.3);
+}
+
+.image-wrapper::before {
+  content: "";
+  position: absolute;
+  inset: 6px;
+  border: 1px solid var(--gold-dark);
+  pointer-events: none;
+}
+
+.image-inner {
+  position: relative;
+  overflow: hidden;
+  background: #1a1a1a;
+  width: 100%;
+  height: 100%;
+}
+
+.image-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Variant: Rectangular ── */
+.rectangular .image-wrapper {
+  border-radius: 2px;
+}
+
+.rectangular .image-inner {
+  aspect-ratio: 4 / 5;
+}
+
+/* ── Variant: Oval ── */
+.oval .image-wrapper {
+  border-radius: 50%;
+  padding: 14px;
+}
+
+.oval .image-wrapper::before {
+  border-radius: 50%;
+}
+
+.oval .image-inner {
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+
+/* ── Variant: Ornate ── */
+.ornate .image-wrapper {
+  border-radius: 4px;
+  padding: 16px;
+  background: linear-gradient(135deg, #c9a84c, #e8d48b, #a07c30, #e8d48b, #c9a84c);
+  box-shadow:
+    0 6px 30px rgba(0, 0, 0, 0.5),
+    inset 0 2px 0 rgba(232, 212, 139, 0.4);
+}
+
+.ornate .image-wrapper::before {
+  inset: 8px;
+  border: 2px solid var(--gold-dark);
+  border-radius: 2px;
+}
+
+.ornate .image-wrapper::after {
+  content: "";
+  position: absolute;
+  inset: 4px;
+  border: 1px solid var(--gold-light);
+  border-radius: 3px;
+  pointer-events: none;
+}
+
+.ornate .image-inner {
+  aspect-ratio: 3 / 4;
+}
+
+/* ── Variant: Arch ── */
+.arch .image-wrapper {
+  border-radius: 120px 120px 4px 4px;
+  padding: 14px;
+}
+
+.arch .image-wrapper::before {
+  border-radius: 110px 110px 2px 2px;
+}
+
+.arch .image-inner {
+  border-radius: 106px 106px 0 0;
+  aspect-ratio: 3 / 4;
+}
+
+/* ── Variant: Circular ── */
+.circular .image-wrapper {
+  border-radius: 50%;
+  padding: 10px;
+}
+
+.circular .image-wrapper::before {
+  border-radius: 50%;
+}
+
+.circular .image-inner {
+  border-radius: 50%;
+  aspect-ratio: 1;
+}
+
+/* ── Museum Placard ── */
+.placard {
+  background: linear-gradient(135deg, #f5f0e8, #e8e0d0);
+  color: #2a2a2e;
+  padding: 0.6rem 1.2rem;
+  text-align: center;
+  border-radius: 2px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  max-width: 240px;
+}
+
+.placard-caption {
+  font-family: var(--font-body);
+  font-size: 0.85rem;
+  font-weight: 600;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+.placard-date {
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  color: #6a6a6a;
+  margin-top: 0.2rem;
+}
+
+/* ── Museum Footer ── */
+
+.footer {
+  padding: 5rem 2rem;
+  text-align: center;
+  background:
+    radial-gradient(ellipse at 50% 60%, rgba(201, 168, 76, 0.08) 0%, transparent 60%),
+    var(--charcoal);
+}
+
+.footer-message {
+  font-family: var(--font-body);
+  font-size: 1.3rem;
+  font-style: italic;
+  font-weight: 300;
+  color: var(--cream-dim);
+  max-width: 500px;
+  margin: 0 auto 2.5rem;
+  line-height: 1.8;
+}
+
+.footer-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+  opacity: 0.7;
+}
+
+.footer-valentine {
+  font-family: var(--font-heading);
+  font-size: 1.8rem;
+  color: var(--gold-light);
+  letter-spacing: 0.08em;
+}
+
+/* ── Responsive ── */
+
+@media (max-width: 767px) {
+  .entrance-heading {
+    font-size: 2.5rem;
+    letter-spacing: 0.06em;
+  }
+
+  .entrance-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .room {
+    padding: 3rem 1rem;
+  }
+
+  .title-text {
+    font-size: 1.6rem;
+  }
+
+  .title-line {
+    flex: 0 1 60px;
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2.5rem;
+  }
+
+  .footer {
+    padding: 3rem 1.5rem;
+  }
+
+  .footer-message {
+    font-size: 1.1rem;
+  }
+
+  .footer-valentine {
+    font-size: 1.3rem;
+  }
+}

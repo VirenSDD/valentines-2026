@@ -1,8 +1,8 @@
-import { test, expect } from "@playwright/test";
+const { test, expect } = require("@playwright/test");
 
 test.describe("Valentine's Museum", () => {
   test("no 404s on page load", async ({ page }) => {
-    const notFound: string[] = [];
+    const notFound = [];
     page.on("response", (res) => {
       if (res.status() === 404) notFound.push(res.url());
     });
@@ -30,12 +30,12 @@ test.describe("Valentine's Museum", () => {
     await page.goto("/");
     await page.waitForLoadState("networkidle");
 
-    const images = page.locator('img[src*="/photos/"]');
+    const images = page.locator('img[src*="photos/"]');
     await expect(images).toHaveCount(7);
 
     for (let i = 0; i < 7; i++) {
       const img = images.nth(i);
-      const naturalWidth = await img.evaluate((el: HTMLImageElement) => el.naturalWidth);
+      const naturalWidth = await img.evaluate((el) => el.naturalWidth);
       const src = await img.getAttribute("src");
       expect(naturalWidth, `Image ${src} failed to load`).toBeGreaterThan(0);
     }
